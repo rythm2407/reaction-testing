@@ -1,0 +1,24 @@
+version: "3"
+services:
+  reaction:
+    image: reactioncommerce/reaction:latest
+    restart: always
+    ports:
+    - "80:3000"
+    environment:
+      MONGO_URL: mongodb://mongo:27017
+      ROOT_URL: http://167.86.96.193   
+    depends_on:
+    - mongo
+    networks:
+      - default
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - default
+
+networks:
+  default:
